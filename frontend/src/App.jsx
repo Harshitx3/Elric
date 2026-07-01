@@ -155,7 +155,8 @@ function App() {
     setRecipe(null)
 
     try {
-      const response = await axios.post('http://localhost:3002/api/recipe', {
+      const API_URL = import.meta.env.VITE_API_URL || 'https://elric.onrender.com'
+      const response = await axios.post(`${API_URL}/api/recipe`, {
         query: ingredients,
         servings: servings || undefined,
         language: language
