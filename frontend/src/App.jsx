@@ -193,13 +193,13 @@ function App() {
     <div className={`min-h-screen transition-colors duration-500 ${isDark ? 'bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900' : 'bg-gradient-to-br from-blue-50 via-white to-blue-50'}`}>
       {/* Navbar */}
       <nav className={`sticky top-0 z-50 backdrop-blur-md border-b transition-all duration-300 ${isDark ? 'bg-slate-900/80 border-slate-700' : 'bg-white/80 border-blue-100'}`}>
-        <div className="max-w-6xl mx-auto px-6 py-4">
+        <div className="max-w-6xl mx-auto px-4 py-3">
           <div className="flex items-center justify-between">
-            <button onClick={handleReset} className="flex items-center gap-3">
-              <div className={`w-12 h-12 rounded-2xl flex items-center justify-center shadow-xl ${isDark ? 'bg-gradient-to-br from-blue-500 to-indigo-600' : 'bg-gradient-to-br from-blue-500 to-indigo-500'}`}>
-                <UtensilsCrossed className="w-7 h-7 text-white" />
+            <button onClick={handleReset} className="flex items-center gap-2">
+              <div className={`w-10 h-10 rounded-xl flex items-center justify-center shadow-lg ${isDark ? 'bg-gradient-to-br from-blue-500 to-indigo-600' : 'bg-gradient-to-br from-blue-500 to-indigo-500'}`}>
+                <UtensilsCrossed className="w-5 h-5 text-white" />
               </div>
-              <span className={`text-2xl font-black font-poppins bg-gradient-to-r ${isDark ? 'from-blue-400 to-indigo-400' : 'from-blue-600 to-indigo-600'} bg-clip-text text-transparent`}>{t.appName}</span>
+              <span className={`text-xl font-bold font-poppins bg-gradient-to-r ${isDark ? 'from-blue-400 to-indigo-400' : 'from-blue-600 to-indigo-600'} bg-clip-text text-transparent hidden sm:block`}>{t.appName}</span>
             </button>
 
             {!recipe && (
@@ -210,26 +210,26 @@ function App() {
               </div>
             )}
 
-            <div className="flex items-center gap-4">
-              {/* Language Switcher */}
+            <div className="flex items-center gap-2 sm:gap-4">
+              {/* Language Switcher - Hide text on mobile */}
               <button
                 onClick={() => setLanguage(language === 'en' ? 'hi' : 'en')}
-                className={`p-2 rounded-lg transition-all hover:scale-110 flex items-center gap-2 ${isDark ? 'hover:bg-slate-800 text-slate-300' : 'hover:bg-blue-50 text-slate-700'}`}
+                className={`p-2 rounded-lg transition-all hover:scale-110 ${isDark ? 'hover:bg-slate-800 text-slate-300' : 'hover:bg-blue-50 text-slate-700'}`}
               >
                 <Globe className="w-5 h-5" />
-                <span className="font-medium">{language === 'en' ? 'EN' : 'HI'}</span>
+                <span className="hidden sm:inline font-medium ml-1">{language === 'en' ? 'EN' : 'HI'}</span>
               </button>
 
               <button
                 onClick={() => setIsDark(!isDark)}
                 className={`p-2 rounded-lg transition-all hover:scale-110 ${isDark ? 'hover:bg-slate-800 text-yellow-400' : 'hover:bg-blue-50 text-blue-600'}`}
               >
-                {isDark ? <Sun className="w-6 h-6" /> : <Moon className="w-6 h-6" />}
+                {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
               </button>
 
               <button
                 onClick={handleReset}
-                className={`px-5 py-2.5 rounded-xl font-semibold shadow-md transition-all hover:scale-105 active:scale-95 ${isDark ? 'bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white' : 'bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-blue-600 hover:to-indigo-600 text-white'}`}
+                className={`px-3 py-2 sm:px-5 sm:py-2.5 rounded-xl font-semibold shadow-md transition-all hover:scale-105 active:scale-95 text-sm sm:text-base ${isDark ? 'bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white' : 'bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-blue-600 hover:to-indigo-600 text-white'}`}
               >
                 {recipe ? t.newRecipe : t.getStarted}
               </button>
@@ -255,20 +255,20 @@ function App() {
       </nav>
 
       {!recipe ? (
-        <main className="max-w-6xl mx-auto px-6">
+        <main className="max-w-6xl mx-auto px-4 sm:px-6">
           {/* Hero Section */}
-          <section id="home" className="py-16 md:py-24">
+          <section id="home" className="py-12 md:py-16 lg:py-24">
             <div className="max-w-3xl mx-auto text-center">
               <div className="mb-8">
-                <Sparkles className={`w-20 h-20 mx-auto mb-4 drop-shadow-lg ${isDark ? 'text-blue-400' : 'text-blue-500'}`} />
+                <Sparkles className={`w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 drop-shadow-lg ${isDark ? 'text-blue-400' : 'text-blue-500'}`} />
               </div>
 
-              <h1 className={`text-4xl md:text-6xl font-bold leading-tight mb-6 font-poppins ${isDark ? 'text-white' : 'text-slate-900'}`}>
+              <h1 className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 font-poppins ${isDark ? 'text-white' : 'text-slate-900'}`}>
                 {t.heroTitle}
                 <span className={`block mt-2 ${isDark ? 'text-blue-400' : 'text-blue-600'}`}>{t.heroSubtitle}</span>
               </h1>
 
-              <p className={`text-lg md:text-xl mb-10 leading-relaxed ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>
+              <p className={`text-base sm:text-lg md:text-xl mb-10 leading-relaxed ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>
                 {t.heroDescription}
               </p>
 
@@ -280,13 +280,13 @@ function App() {
                       placeholder={t.ingredientsPlaceholder}
                       value={ingredients}
                       onChange={(e) => setIngredients(e.target.value)}
-                      className={`w-full px-5 py-4 pr-14 rounded-2xl border shadow-sm transition-all focus:outline-none focus:ring-4 focus:ring-blue-200 ${isDark ? 'bg-slate-800 border-slate-700 text-white placeholder-slate-500 focus:border-blue-500' : 'bg-white border-blue-100 text-slate-900 placeholder-slate-400 focus:border-blue-400'}`}
+                      className={`w-full px-4 py-3 sm:px-5 sm:py-4 pr-12 sm:pr-14 rounded-2xl border shadow-sm transition-all focus:outline-none focus:ring-4 focus:ring-blue-200 ${isDark ? 'bg-slate-800 border-slate-700 text-white placeholder-slate-500 focus:border-blue-500' : 'bg-white border-blue-100 text-slate-900 placeholder-slate-400 focus:border-blue-400'}`}
                     />
                     <button
                       onClick={() => handleVoiceInput('ingredients')}
-                      className={`absolute right-2 top-1/2 -translate-y-1/2 p-2 rounded-xl transition-all hover:scale-110 ${listeningToIngredients ? 'bg-red-500 animate-pulse text-white' : isDark ? 'hover:bg-slate-700 text-blue-400' : 'hover:bg-blue-100 text-blue-500'}`}
+                      className={`absolute right-2 top-1/2 -translate-y-1/2 p-1.5 sm:p-2 rounded-xl transition-all hover:scale-110 ${listeningToIngredients ? 'bg-red-500 animate-pulse text-white' : isDark ? 'hover:bg-slate-700 text-blue-400' : 'hover:bg-blue-100 text-blue-500'}`}
                     >
-                      {listeningToIngredients ? <MicOff className="w-6 h-6" /> : <Mic className="w-6 h-6" />}
+                      {listeningToIngredients ? <MicOff className="w-5 h-5 sm:w-6 sm:h-6" /> : <Mic className="w-5 h-5 sm:w-6 sm:h-6" />}
                     </button>
                   </div>
 
@@ -296,13 +296,13 @@ function App() {
                       placeholder={t.servingsPlaceholder}
                       value={servings}
                       onChange={(e) => setServings(e.target.value)}
-                      className={`w-full px-5 py-4 pr-14 rounded-2xl border shadow-sm transition-all focus:outline-none focus:ring-4 focus:ring-blue-200 ${isDark ? 'bg-slate-800 border-slate-700 text-white placeholder-slate-500 focus:border-blue-500' : 'bg-white border-blue-100 text-slate-900 placeholder-slate-400 focus:border-blue-400'}`}
+                      className={`w-full px-4 py-3 sm:px-5 sm:py-4 pr-12 sm:pr-14 rounded-2xl border shadow-sm transition-all focus:outline-none focus:ring-4 focus:ring-blue-200 ${isDark ? 'bg-slate-800 border-slate-700 text-white placeholder-slate-500 focus:border-blue-500' : 'bg-white border-blue-100 text-slate-900 placeholder-slate-400 focus:border-blue-400'}`}
                     />
                     <button
                       onClick={() => handleVoiceInput('servings')}
-                      className={`absolute right-2 top-1/2 -translate-y-1/2 p-2 rounded-xl transition-all hover:scale-110 ${listeningToServings ? 'bg-red-500 animate-pulse text-white' : isDark ? 'hover:bg-slate-700 text-blue-400' : 'hover:bg-blue-100 text-blue-500'}`}
+                      className={`absolute right-2 top-1/2 -translate-y-1/2 p-1.5 sm:p-2 rounded-xl transition-all hover:scale-110 ${listeningToServings ? 'bg-red-500 animate-pulse text-white' : isDark ? 'hover:bg-slate-700 text-blue-400' : 'hover:bg-blue-100 text-blue-500'}`}
                     >
-                      {listeningToServings ? <MicOff className="w-6 h-6" /> : <Mic className="w-6 h-6" />}
+                      {listeningToServings ? <MicOff className="w-5 h-5 sm:w-6 sm:h-6" /> : <Mic className="w-5 h-5 sm:w-6 sm:h-6" />}
                     </button>
                   </div>
                 </div>
@@ -310,16 +310,16 @@ function App() {
                 <button
                   onClick={handleGenerate}
                   disabled={loading}
-                  className={`px-10 py-5 rounded-2xl font-bold text-xl shadow-xl transition-all hover:scale-105 active:scale-95 flex items-center justify-center gap-3 mx-auto ${isDark ? 'bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white' : 'bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-blue-600 hover:to-indigo-600 text-white'} disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100`}
+                  className={`px-6 sm:px-10 py-4 sm:py-5 rounded-2xl font-bold text-lg sm:text-xl shadow-xl transition-all hover:scale-105 active:scale-95 flex items-center justify-center gap-3 mx-auto ${isDark ? 'bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white' : 'bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-blue-600 hover:to-indigo-600 text-white'} disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100`}
                 >
                   {loading ? (
                     <>
-                      <Loader2 className="w-7 h-7 animate-spin" />
+                      <Loader2 className="w-6 h-6 sm:w-7 sm:h-7 animate-spin" />
                       {t.cookingUpRecipe}
                     </>
                   ) : (
                     <>
-                      <Sparkles className="w-7 h-7" />
+                      <Sparkles className="w-6 h-6 sm:w-7 sm:h-7" />
                       {t.findMyRecipe}
                     </>
                   )}
@@ -329,13 +329,13 @@ function App() {
           </section>
 
           {/* Features */}
-          <section id="features" className="py-16 md:py-24">
+          <section id="features" className="py-12 md:py-16 lg:py-24">
             <div className="text-center mb-12">
-              <h2 className={`text-3xl md:text-4xl font-bold mb-4 font-poppins ${isDark ? 'text-white' : 'text-slate-900'}`}>{t.featuresTitle}</h2>
-              <p className={`text-lg ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>{t.featuresSubtitle}</p>
+              <h2 className={`text-2xl sm:text-3xl md:text-4xl font-bold mb-4 font-poppins ${isDark ? 'text-white' : 'text-slate-900'}`}>{t.featuresTitle}</h2>
+              <p className={`text-base sm:text-lg ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>{t.featuresSubtitle}</p>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
               {[
                 { icon: UtensilsCrossed, title: t.smartRecipes, desc: t.smartRecipesDesc },
                 { icon: ShoppingCart, title: t.instantShopping, desc: t.instantShoppingDesc },
@@ -344,22 +344,22 @@ function App() {
               ].map((feature, idx) => (
                 <div
                   key={idx}
-                  className={`p-6 rounded-2xl border shadow-lg transition-all hover:shadow-2xl hover:-translate-y-2 ${isDark ? 'bg-slate-800 border-slate-700 hover:border-blue-500/50' : 'bg-white border-blue-100 hover:border-blue-200'}`}
+                  className={`p-5 sm:p-6 rounded-2xl border shadow-lg transition-all hover:shadow-2xl hover:-translate-y-2 ${isDark ? 'bg-slate-800 border-slate-700 hover:border-blue-500/50' : 'bg-white border-blue-100 hover:border-blue-200'}`}
                 >
-                  <div className={`w-14 h-14 rounded-xl flex items-center justify-center mb-4 shadow-md ${isDark ? 'bg-gradient-to-br from-blue-500/20 to-indigo-600/20 text-blue-400' : 'bg-gradient-to-br from-blue-100 to-indigo-100 text-blue-600'}`}>
-                    <feature.icon className="w-7 h-7" />
+                  <div className={`w-12 h-12 sm:w-14 sm:h-14 rounded-xl flex items-center justify-center mb-4 shadow-md ${isDark ? 'bg-gradient-to-br from-blue-500/20 to-indigo-600/20 text-blue-400' : 'bg-gradient-to-br from-blue-100 to-indigo-100 text-blue-600'}`}>
+                    <feature.icon className="w-6 h-6 sm:w-7 sm:h-7" />
                   </div>
-                  <h3 className={`text-xl font-bold mb-2 font-poppins ${isDark ? 'text-white' : 'text-slate-900'}`}>{feature.title}</h3>
-                  <p className={`${isDark ? 'text-slate-400' : 'text-slate-600'}`}>{feature.desc}</p>
+                  <h3 className={`text-lg sm:text-xl font-bold mb-2 font-poppins ${isDark ? 'text-white' : 'text-slate-900'}`}>{feature.title}</h3>
+                  <p className={`text-sm sm:text-base ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>{feature.desc}</p>
                 </div>
               ))}
             </div>
           </section>
 
           {/* How It Works */}
-          <section id="how-it-works" className="py-16 md:py-24">
+          <section id="how-it-works" className="py-12 md:py-16 lg:py-24">
             <div className="text-center mb-12">
-              <h2 className={`text-3xl md:text-4xl font-bold mb-4 font-poppins ${isDark ? 'text-white' : 'text-slate-900'}`}>{t.howItWorksTitle}</h2>
+              <h2 className={`text-2xl sm:text-3xl md:text-4xl font-bold mb-4 font-poppins ${isDark ? 'text-white' : 'text-slate-900'}`}>{t.howItWorksTitle}</h2>
             </div>
 
             <div className="max-w-3xl mx-auto">
@@ -368,16 +368,16 @@ function App() {
                 { step: 2, title: t.step2Title, desc: t.step2Desc },
                 { step: 3, title: t.step3Title, desc: t.step3Desc },
               ].map((item, idx) => (
-                <div key={idx} className="flex gap-6 mb-10 last:mb-0">
+                <div key={idx} className="flex gap-4 sm:gap-6 mb-8 sm:mb-10 last:mb-0">
                   <div className="flex flex-col items-center">
-                    <div className={`w-14 h-14 rounded-full flex items-center justify-center font-bold text-xl shadow-lg ${isDark ? 'bg-gradient-to-br from-blue-500 to-indigo-600 text-white' : 'bg-gradient-to-br from-blue-500 to-indigo-500 text-white'}`}>
+                    <div className={`w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center font-bold text-lg sm:text-xl shadow-lg ${isDark ? 'bg-gradient-to-br from-blue-500 to-indigo-600 text-white' : 'bg-gradient-to-br from-blue-500 to-indigo-500 text-white'}`}>
                       {item.step}
                     </div>
                     {idx < 2 && <div className={`w-1 flex-1 mt-2 ${isDark ? 'bg-gradient-to-b from-blue-500/50 to-transparent' : 'bg-gradient-to-b from-blue-400/50 to-transparent'}`} />}
                   </div>
-                  <div className="pt-1 pb-8">
-                    <h3 className={`text-xl font-bold mb-2 font-poppins ${isDark ? 'text-white' : 'text-slate-900'}`}>{item.title}</h3>
-                    <p className={`text-lg ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>{item.desc}</p>
+                  <div className="pt-1 pb-6 sm:pb-8">
+                    <h3 className={`text-lg sm:text-xl font-bold mb-2 font-poppins ${isDark ? 'text-white' : 'text-slate-900'}`}>{item.title}</h3>
+                    <p className={`text-base sm:text-lg ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>{item.desc}</p>
                   </div>
                 </div>
               ))}
@@ -385,57 +385,60 @@ function App() {
           </section>
         </main>
       ) : (
-        <main className="max-w-4xl mx-auto px-6 py-16">
-          <div className={`p-8 rounded-3xl border shadow-2xl ${isDark ? 'bg-slate-800 border-slate-700' : 'bg-white border-blue-100'}`}>
+        <main className="max-w-4xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
+          <div className={`p-5 sm:p-8 rounded-3xl border shadow-2xl ${isDark ? 'bg-slate-800 border-slate-700' : 'bg-white border-blue-100'}`}>
             <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
               <div>
-                <h2 className={`text-3xl font-bold mb-2 font-poppins ${isDark ? 'text-white' : 'text-slate-900'}`}>{recipe.title}</h2>
+                <h2 className={`text-2xl sm:text-3xl font-bold mb-2 font-poppins ${isDark ? 'text-white' : 'text-slate-900'}`}>{recipe.title}</h2>
                 {recipe.servings && (
-                  <p className={`text-lg ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>{t.forPeople.replace('{count}', recipe.servings)}</p>
+                  <p className={`text-base sm:text-lg ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>{t.forPeople.replace('{count}', recipe.servings)}</p>
                 )}
               </div>
             </div>
 
             <div className="mb-6">
-              <div className="flex gap-2 border-b border-slate-200 dark:border-slate-700 pb-2">
+              <div className="flex flex-wrap gap-1 sm:gap-2 border-b border-slate-200 dark:border-slate-700 pb-2">
                 <button
                   onClick={() => setActiveTab('ingredients')}
-                  className={`px-6 py-3 rounded-t-xl font-semibold transition-all ${
+                  className={`px-3 sm:px-6 py-2 sm:py-3 rounded-t-xl font-semibold text-sm sm:text-base transition-all ${
                     activeTab === 'ingredients'
                       ? isDark ? 'bg-slate-700 text-white border border-b-0 border-slate-600' : 'bg-blue-100 text-blue-700 border border-b-0 border-blue-200'
                       : isDark ? 'text-slate-400 hover:text-white' : 'text-slate-500 hover:text-slate-700'
                   }`}
                 >
-                  <div className="flex items-center gap-2">
-                    <ShoppingCart className="w-5 h-5" />
-                    {t.ingredientsTitle}
+                  <div className="flex items-center gap-1 sm:gap-2">
+                    <ShoppingCart className="w-4 h-4 sm:w-5 sm:h-5" />
+                    <span className="hidden sm:inline">{t.ingredientsTitle}</span>
+                    <span className="sm:hidden">Ingredients</span>
                   </div>
                 </button>
                 <button
                   onClick={() => setActiveTab('instructions')}
-                  className={`px-6 py-3 rounded-t-xl font-semibold transition-all ${
+                  className={`px-3 sm:px-6 py-2 sm:py-3 rounded-t-xl font-semibold text-sm sm:text-base transition-all ${
                     activeTab === 'instructions'
                       ? isDark ? 'bg-slate-700 text-white border border-b-0 border-slate-600' : 'bg-blue-100 text-blue-700 border border-b-0 border-blue-200'
                       : isDark ? 'text-slate-400 hover:text-white' : 'text-slate-500 hover:text-slate-700'
                   }`}
                 >
-                  <div className="flex items-center gap-2">
-                    <Clock className="w-5 h-5" />
-                    {t.instructionsTitle}
+                  <div className="flex items-center gap-1 sm:gap-2">
+                    <Clock className="w-4 h-4 sm:w-5 sm:h-5" />
+                    <span className="hidden sm:inline">{t.instructionsTitle}</span>
+                    <span className="sm:hidden">Steps</span>
                   </div>
                 </button>
                 {recipe.nutrition && (
                   <button
                     onClick={() => setActiveTab('nutrition')}
-                    className={`px-6 py-3 rounded-t-xl font-semibold transition-all ${
+                    className={`px-3 sm:px-6 py-2 sm:py-3 rounded-t-xl font-semibold text-sm sm:text-base transition-all ${
                       activeTab === 'nutrition'
                         ? isDark ? 'bg-slate-700 text-white border border-b-0 border-slate-600' : 'bg-blue-100 text-blue-700 border border-b-0 border-blue-200'
                         : isDark ? 'text-slate-400 hover:text-white' : 'text-slate-500 hover:text-slate-700'
                     }`}
                   >
-                    <div className="flex items-center gap-2">
-                      <Activity className="w-5 h-5" />
-                      {t.nutritionTitle}
+                    <div className="flex items-center gap-1 sm:gap-2">
+                      <Activity className="w-4 h-4 sm:w-5 sm:h-5" />
+                      <span className="hidden sm:inline">{t.nutritionTitle}</span>
+                      <span className="sm:hidden">Nutrition</span>
                     </div>
                   </button>
                 )}
@@ -446,11 +449,11 @@ function App() {
               {activeTab === 'ingredients' && (
                 <ul className="space-y-4">
                   {recipe.materials.map((item, idx) => (
-                    <li key={idx} className={`p-5 rounded-2xl ${isDark ? 'bg-slate-700/50' : 'bg-blue-50'}`}>
+                    <li key={idx} className={`p-4 sm:p-5 rounded-2xl ${isDark ? 'bg-slate-700/50' : 'bg-blue-50'}`}>
                       <div className="mb-3">
-                        <span className={`font-semibold text-lg ${isDark ? 'text-white' : 'text-slate-900'}`}>{item.name}</span>
+                        <span className={`font-semibold text-base sm:text-lg ${isDark ? 'text-white' : 'text-slate-900'}`}>{item.name}</span>
                         {item.quantity && (
-                          <span className={`ml-2 ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>
+                          <span className={`ml-2 text-sm sm:text-base ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>
                             {' '}- {item.quantity}
                           </span>
                         )}
@@ -460,28 +463,28 @@ function App() {
                           href={generateShoppingLink(item.name, 'blinkit')}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-yellow-400 hover:bg-yellow-500 transition-all hover:scale-105 shadow-md"
+                          className="flex items-center gap-1 sm:gap-2 px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl bg-yellow-400 hover:bg-yellow-500 transition-all hover:scale-105 shadow-md"
                         >
-                          <img src={blinkitLogo} alt="Blinkit" className="h-5 w-auto" />
-                          <span className="text-sm font-bold text-black">{t.buy}</span>
+                          <img src={blinkitLogo} alt="Blinkit" className="h-4 w-auto sm:h-5" />
+                          <span className="text-xs sm:text-sm font-bold text-black">{t.buy}</span>
                         </a>
                         <a
                           href={generateShoppingLink(item.name, 'zepto')}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-700 transition-all hover:scale-105 shadow-md"
+                          className="flex items-center gap-1 sm:gap-2 px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl bg-purple-600 hover:bg-purple-700 transition-all hover:scale-105 shadow-md"
                         >
-                          <img src={zeptoLogo} alt="Zepto" className="h-5 w-auto" />
-                          <span className="text-sm font-bold text-white">{t.buy}</span>
+                          <img src={zeptoLogo} alt="Zepto" className="h-4 w-auto sm:h-5" />
+                          <span className="text-xs sm:text-sm font-bold text-white">{t.buy}</span>
                         </a>
                         <a
                           href={generateShoppingLink(item.name, 'instamart')}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-orange-500 hover:bg-orange-600 transition-all hover:scale-105 shadow-md"
+                          className="flex items-center gap-1 sm:gap-2 px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl bg-orange-500 hover:bg-orange-600 transition-all hover:scale-105 shadow-md"
                         >
-                          <img src={swiggyLogo} alt="Swiggy Instamart" className="h-5 w-auto" />
-                          <span className="text-sm font-bold text-white">{t.buy}</span>
+                          <img src={swiggyLogo} alt="Swiggy Instamart" className="h-4 w-auto sm:h-5" />
+                          <span className="text-xs sm:text-sm font-bold text-white">{t.buy}</span>
                         </a>
                       </div>
                     </li>
@@ -490,35 +493,35 @@ function App() {
               )}
 
               {activeTab === 'instructions' && (
-                <ol className="space-y-5">
+                <ol className="space-y-4 sm:space-y-5">
                   {recipe.steps.map((step, idx) => (
-                    <li key={idx} className="flex gap-5">
-                      <span className={`flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center font-bold text-lg shadow-md ${isDark ? 'bg-gradient-to-br from-blue-500 to-indigo-600 text-white' : 'bg-gradient-to-br from-blue-500 to-indigo-500 text-white'}`}>
+                    <li key={idx} className="flex gap-4 sm:gap-5">
+                      <span className={`flex-shrink-0 w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center font-bold text-base sm:text-lg shadow-md ${isDark ? 'bg-gradient-to-br from-blue-500 to-indigo-600 text-white' : 'bg-gradient-to-br from-blue-500 to-indigo-500 text-white'}`}>
                         {idx + 1}
                       </span>
-                      <p className={`pt-1.5 text-lg leading-relaxed ${isDark ? 'text-slate-300' : 'text-slate-800'}`}>{step}</p>
+                      <p className={`pt-1 sm:pt-1.5 text-base sm:text-lg leading-relaxed ${isDark ? 'text-slate-300' : 'text-slate-800'}`}>{step}</p>
                     </li>
                   ))}
                 </ol>
               )}
 
               {activeTab === 'nutrition' && recipe.nutrition && (
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                  <div className={`p-6 rounded-2xl text-center ${isDark ? 'bg-gradient-to-br from-orange-500/20 to-red-500/20 border border-orange-500/30' : 'bg-gradient-to-br from-orange-100 to-red-100 border border-orange-200'}`}>
-                    <div className={`text-3xl font-bold mb-2 ${isDark ? 'text-orange-400' : 'text-orange-600'}`}>{recipe.nutrition.calories}</div>
-                    <div className={`text-sm font-semibold ${isDark ? 'text-slate-300' : 'text-slate-700'}`}>Calories</div>
+                <div className="grid grid-cols-2 gap-3 sm:gap-4">
+                  <div className={`p-4 sm:p-6 rounded-2xl text-center ${isDark ? 'bg-gradient-to-br from-orange-500/20 to-red-500/20 border border-orange-500/30' : 'bg-gradient-to-br from-orange-100 to-red-100 border border-orange-200'}`}>
+                    <div className={`text-2xl sm:text-3xl font-bold mb-2 ${isDark ? 'text-orange-400' : 'text-orange-600'}`}>{recipe.nutrition.calories}</div>
+                    <div className={`text-xs sm:text-sm font-semibold ${isDark ? 'text-slate-300' : 'text-slate-700'}`}>Calories</div>
                   </div>
-                  <div className={`p-6 rounded-2xl text-center ${isDark ? 'bg-gradient-to-br from-green-500/20 to-emerald-500/20 border border-green-500/30' : 'bg-gradient-to-br from-green-100 to-emerald-100 border border-green-200'}`}>
-                    <div className={`text-3xl font-bold mb-2 ${isDark ? 'text-green-400' : 'text-green-600'}`}>{recipe.nutrition.protein}g</div>
-                    <div className={`text-sm font-semibold ${isDark ? 'text-slate-300' : 'text-slate-700'}`}>Protein</div>
+                  <div className={`p-4 sm:p-6 rounded-2xl text-center ${isDark ? 'bg-gradient-to-br from-green-500/20 to-emerald-500/20 border border-green-500/30' : 'bg-gradient-to-br from-green-100 to-emerald-100 border border-green-200'}`}>
+                    <div className={`text-2xl sm:text-3xl font-bold mb-2 ${isDark ? 'text-green-400' : 'text-green-600'}`}>{recipe.nutrition.protein}g</div>
+                    <div className={`text-xs sm:text-sm font-semibold ${isDark ? 'text-slate-300' : 'text-slate-700'}`}>Protein</div>
                   </div>
-                  <div className={`p-6 rounded-2xl text-center ${isDark ? 'bg-gradient-to-br from-yellow-500/20 to-amber-500/20 border border-yellow-500/30' : 'bg-gradient-to-br from-yellow-100 to-amber-100 border border-yellow-200'}`}>
-                    <div className={`text-3xl font-bold mb-2 ${isDark ? 'text-yellow-400' : 'text-yellow-600'}`}>{recipe.nutrition.carbs}g</div>
-                    <div className={`text-sm font-semibold ${isDark ? 'text-slate-300' : 'text-slate-700'}`}>Carbs</div>
+                  <div className={`p-4 sm:p-6 rounded-2xl text-center ${isDark ? 'bg-gradient-to-br from-yellow-500/20 to-amber-500/20 border border-yellow-500/30' : 'bg-gradient-to-br from-yellow-100 to-amber-100 border border-yellow-200'}`}>
+                    <div className={`text-2xl sm:text-3xl font-bold mb-2 ${isDark ? 'text-yellow-400' : 'text-yellow-600'}`}>{recipe.nutrition.carbs}g</div>
+                    <div className={`text-xs sm:text-sm font-semibold ${isDark ? 'text-slate-300' : 'text-slate-700'}`}>Carbs</div>
                   </div>
-                  <div className={`p-6 rounded-2xl text-center ${isDark ? 'bg-gradient-to-br from-purple-500/20 to-pink-500/20 border border-purple-500/30' : 'bg-gradient-to-br from-purple-100 to-pink-100 border border-purple-200'}`}>
-                    <div className={`text-3xl font-bold mb-2 ${isDark ? 'text-purple-400' : 'text-purple-600'}`}>{recipe.nutrition.fat}g</div>
-                    <div className={`text-sm font-semibold ${isDark ? 'text-slate-300' : 'text-slate-700'}`}>Fat</div>
+                  <div className={`p-4 sm:p-6 rounded-2xl text-center ${isDark ? 'bg-gradient-to-br from-purple-500/20 to-pink-500/20 border border-purple-500/30' : 'bg-gradient-to-br from-purple-100 to-pink-100 border border-purple-200'}`}>
+                    <div className={`text-2xl sm:text-3xl font-bold mb-2 ${isDark ? 'text-purple-400' : 'text-purple-600'}`}>{recipe.nutrition.fat}g</div>
+                    <div className={`text-xs sm:text-sm font-semibold ${isDark ? 'text-slate-300' : 'text-slate-700'}`}>Fat</div>
                   </div>
                 </div>
               )}
